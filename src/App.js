@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import FlightInfo from './components/FlightInfo';
 import styled from 'styled-components';
 
-const Div1 = styled.div`
-  text-align: center;
-`;
+const Div1 = styled.div``;
 
 class App extends Component {
   constructor(props) {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
+import * as actionCreator from '../actions/index.js';
 import { connect } from 'react-redux';
 
 function getCarrierIcon(code) {
@@ -24,9 +25,7 @@ const Div1 = styled.div`
   }
 `;
 
-const DivM = styled.div`
-  text-align: center;
-`;
+const DivM = styled.div``;
 
 const DivImg = styled.div`
   height: 60px;
@@ -88,50 +87,62 @@ const Img = styled.img`
   width: 60px;
 `;
 
+const mapStateToProps = state => {
+  return {
+    flights: state.flights
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getFlightInfo: () => dispatch(actionCreator.getFlightInfo())
+  };
+};
+
 class FlightInfo extends Component {
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
 
-    this.state = {
-      loading: true,
-      result: []
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  //   this.state = {
+  //     loading: true,
+  //     result: []
+  //   };
+  //   this.handleChange = this.handleChange.bind(this);
+  //   this.handleSubmit = this.handleSubmit.bind(this);
+  // }
 
-  async handleSubmit(e) {
-    e.preventDefault();
-  }
+  // async handleSubmit(e) {
+  //   e.preventDefault();
+  // }
 
-  handleChange(e) {
-    let target = e.target;
-    let value = target.type === 'checkbox' ? target.checked : target.value;
-    let name = target.name;
+  // handleChange(e) {
+  //   let target = e.target;
+  //   let value = target.type === 'checkbox' ? target.checked : target.value;
+  //   let name = target.name;
 
-    this.setState({
-      [name]: value
-    });
-  }
+  //   this.setState({
+  //     [name]: value
+  //   });
+  // }
 
-  async componentDidMount() {
-    const link =
-      'https://gist.githubusercontent.com/bgdavidx/132a9e3b9c70897bc07cfa5ca25747be/raw/8dbbe1db38087fad4a8c8ade48e741d6fad8c872/gistfile1.txt';
-    const responce = await fetch(link);
-    const data = await responce.json();
-    this.setState({
-      result: data
-    });
-  }
+  // async componentDidMount() {
+  //   const link =
+  //     'https://gist.githubusercontent.com/bgdavidx/132a9e3b9c70897bc07cfa5ca25747be/raw/8dbbe1db38087fad4a8c8ade48e741d6fad8c872/gistfile1.txt';
+  //   const responce = await fetch(link);
+  //   const data = await responce.json();
+  //   this.setState({
+  //     result: data
+  //   });
+  // }
 
-  mapStateProps(state) {
-    return {
-      result: state.result
-    };
-  }
+  // mapStateProps(state) {
+  //   return {
+  //     result: state.result
+  //   };
+  // }
 
   render() {
-    const theresult = this.state.result;
+    const theresult = this.props.flights;
     return (
       <ThemeProvider theme={theme}>
         <DivM>
@@ -173,4 +184,4 @@ class FlightInfo extends Component {
   }
 }
 
-export default FlightInfo;
+export default connect(mapStateToProps, mapDispatchToProps)(FlightInfo);
