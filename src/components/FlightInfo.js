@@ -100,48 +100,17 @@ const mapDispatchToProps = dispatch => {
 };
 
 class FlightInfo extends Component {
-  // constructor(props) {
-  //   super(props);
-
-  //   this.state = {
-  //     loading: true,
-  //     result: []
-  //   };
-  //   this.handleChange = this.handleChange.bind(this);
-  //   this.handleSubmit = this.handleSubmit.bind(this);
-  // }
-
-  // async handleSubmit(e) {
-  //   e.preventDefault();
-  // }
-
-  // handleChange(e) {
-  //   let target = e.target;
-  //   let value = target.type === 'checkbox' ? target.checked : target.value;
-  //   let name = target.name;
-
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // }
-
   componentDidMount(e) {
     this.props.getFlightInfo();
   }
-
-  // mapStateProps(state) {
-  //   return {
-  //     result: state.result
-  //   };
-  // }
 
   render() {
     const theresult = this.props.flights.flightInfo;
     return (
       <ThemeProvider theme={theme}>
         <DivM>
-          {theresult.map(model => (
-            <div key={model.index}>
+          {theresult.map((model, index) => (
+            <div key={index}>
               <Li>
                 <Div1>
                   <DivC>
