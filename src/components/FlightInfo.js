@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import * as actionCreator from '../actions/index.js';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 function getCarrierIcon(code) {
   return `https://wf-deploy-assets.whereto.com/airlines/${code}.png`;
@@ -126,7 +127,12 @@ class FlightInfo extends Component {
                       <Pa>{model.origin}</Pa>
                     </DivAirport>
                     <DivDateTime>
-                      <Pdt>{model.departureTime}e</Pdt>
+                      <Pdt>
+                        {moment(model.departureTime).format(
+                          'MMMM Do YYYY, h:mm:ss a'
+                        )}
+                        e
+                      </Pdt>
                     </DivDateTime>
                   </Div2>
                   <Div2>
@@ -134,7 +140,11 @@ class FlightInfo extends Component {
                       <Pa>{model.destination}</Pa>
                     </DivAirport>
                     <DivDateTime>
-                      <Pdt>{model.arrivalTime}</Pdt>
+                      <Pdt>
+                        {moment(model.arrivalTime).format(
+                          'MMMM Do YYYY, h:mm:ss a'
+                        )}
+                      </Pdt>
                     </DivDateTime>
                   </Div2>
                 </Div1>
