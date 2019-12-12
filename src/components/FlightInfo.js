@@ -125,15 +125,9 @@ class FlightInfo extends Component {
   //   });
   // }
 
-  // async componentDidMount() {
-  //   const link =
-  //     'https://gist.githubusercontent.com/bgdavidx/132a9e3b9c70897bc07cfa5ca25747be/raw/8dbbe1db38087fad4a8c8ade48e741d6fad8c872/gistfile1.txt';
-  //   const responce = await fetch(link);
-  //   const data = await responce.json();
-  //   this.setState({
-  //     result: data
-  //   });
-  // }
+  componentDidMount(e) {
+    this.props.getFlightInfo();
+  }
 
   // mapStateProps(state) {
   //   return {
@@ -142,12 +136,12 @@ class FlightInfo extends Component {
   // }
 
   render() {
-    const theresult = this.props.flights;
+    const theresult = this.props.flights.flightInfo;
     return (
       <ThemeProvider theme={theme}>
         <DivM>
           {theresult.map(model => (
-            <div key={model.departureTime}>
+            <div key={model.index}>
               <Li>
                 <Div1>
                   <DivC>
