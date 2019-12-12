@@ -24,48 +24,49 @@ const Div1 = styled.div`
   &:hover {
     background: #cefefe;
   }
+  justify-content: space-around;
 `;
 
 const DivM = styled.div``;
 
 const DivImg = styled.div`
-  height: 60px;
-  width: 60px;
+  height: 76%;
 `;
 
-const DivName = styled.div`
-  margin: 0px;
-`;
+const DivName = styled.div``;
 
 const DivDateTime = styled.div`
-  padding-top: 12px;
+  flex: 1;
 `;
 
 const DivAirport = styled.div`
-  padding-top: 12px;
+  flex: 3;
 `;
 
 const DivC = styled.div`
   padding: 10px 24px;
   box-sizing: border-box;
-  height: 100px;
-  width: 25%;
+  flex: 1;
+  flex-direction: column;
+  display: flex;
 `;
 
 const Div2 = styled.div`
   padding: 10px 24px;
   box-sizing: border-box;
-  height: 100px;
-  width: 37.5%;
+  flex: 2;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 `;
 
 const Pc = styled.span`
   font-size: ${props => props.theme.fontSize};
   font-family: ${props => props.theme.font};
-  padding-left: 17px;
+  padding-left: 20px;
 `;
 const Pa = styled.span`
-  font-size: 2rem;
+  font-size: 250%;
   font-family: ${props => props.theme.font};
 `;
 const Pdt = styled.span`
@@ -84,8 +85,8 @@ const Li = styled.li`
 `;
 
 const Img = styled.img`
-  height: 60px;
-  width: 60px;
+  max-height: 99%
+  max-width:100%;
 `;
 
 const mapStateToProps = state => {
@@ -131,7 +132,6 @@ class FlightInfo extends Component {
                         {moment(model.departureTime).format(
                           'MMMM Do YYYY, h:mm:ss a'
                         )}
-                        e
                       </Pdt>
                     </DivDateTime>
                   </Div2>
